@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifokor Maslahati PRO</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:20px;
+    color:#00ffd5;
+}
+
+.top{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.left, .right{
+    flex:1;
+    min-width:300px;
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+textarea{
+    width:100%;
+    height:140px;
+    margin-top:10px;
+    border:none;
+    border-radius:15px;
+    padding:15px;
+    font-size:18px;
+    resize:none;
+    outline:none;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    background:#00ffd5;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#00c3a5;
+}
+
+.result{
+    margin-top:20px;
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    min-height:200px;
+    line-height:1.8;
+}
+
+.list{
+    margin-top:10px;
+    line-height:2;
+}
+
+.list div{
+    background:rgba(255,255,255,0.08);
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.warning{
+    margin-top:20px;
+    text-align:center;
+    color:#ffb0b0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🩺 SHIFOKOR MASLAHATI PRO</h1>
+
+<div class="top">
+
+<div class="left">
+
+<h2>Kasallik yoki og‘riq yozing</h2>
+
+<textarea id="symptom" placeholder="Masalan: yuragim og‘riyapti"></textarea>
+
+<button onclick="analyze()">Maslahat Olish</button>
+
+<div class="result" id="result">
+Bu yerda maslahat chiqadi...
+</div>
+
+</div>
+
+<div class="right">
+
+<h2>📋 Mavjud Kasalliklar Ro‘yxati</h2>
+
+<div class="list">
+
+<div>❤️ Yurak og‘rig‘i</div>
+<div>🧠 Bosh og‘rig‘i</div>
+<div>🫁 O‘pka og‘rig‘i</div>
+<div>🩺 Buyrak og‘rig‘i</div>
+<div>🤢 Qorin og‘rig‘i</div>
+<div>😷 Tomoq og‘rig‘i</div>
+<div>🤧 Yo‘tal</div>
+<div>🌡️ Isitma</div>
+<div>🦷 Tish og‘rig‘i</div>
+<div>👂 Quloq og‘rig‘i</div>
+<div>👁️ Ko‘z og‘rig‘i</div>
+<div>🦵 Oyoq og‘rig‘i</div>
+<div>💪 Qo‘l og‘rig‘i</div>
+<div>🦴 Bel og‘rig‘i</div>
+<div>🧍 Bo‘yin og‘rig‘i</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="warning">
+⚠️ Bu loyiha faqat o‘quv maqsadida yaratilgan. Kuchli og‘riq bo‘lsa haqiqiy shifokorga murojaat qiling.
+</div>
+
+</div>
+
+<script>
+
+function analyze(){
+
+let text = document.getElementById("symptom").value.toLowerCase();
+
+let result = document.getElementById("result");
+
+if(text.includes("yurak")){
+
+result.innerHTML = `
+<h2>❤️ Yurak og‘rig‘i</h2>
+<ul>
+<li>Tez yugurmaslik</li>
+<li>Stressdan saqlanish</li>
+<li>Ko‘proq dam olish</li>
+<li>Kardiolog ko‘rigiga borish</li>
+<li>Dorilarni faqat shifokor tavsiyasi bilan ichish</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("buyrak")){
+
+result.innerHTML = `
+<h2>🩺 Buyrak og‘rig‘i</h2>
+<ul>
+<li>Ko‘p suv iching</li>
+<li>Sovuqdan ehtiyot bo‘ling</li>
+<li>Tuzli ovqatni kamaytiring</li>
+<li>Shifokorga analiz topshiring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("qorin")){
+
+result.innerHTML = `
+<h2>🤢 Qorin og‘rig‘i</h2>
+<ul>
+<li>Yengil ovqat yeying</li>
+<li>Gazli ichimlik ichmang</li>
+<li>Dam oling</li>
+<li>Og‘riq kuchaysa shifokorga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("bosh")){
+
+result.innerHTML = `
+<h2>🧠 Bosh og‘rig‘i</h2>
+<ul>
+<li>Telefonni kamaytiring</li>
+<li>Ko‘proq uxlang</li>
+<li>Suv iching</li>
+<li>Shovqindan uzoq bo‘ling</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("o'pka") || text.includes("opka")){
+
+result.innerHTML = `
+<h2>🫁 O‘pka og‘rig‘i</h2>
+<ul>
+<li>Toza havoda yuring</li>
+<li>Chekishdan uzoq bo‘ling</li>
+<li>Ko‘p suv iching</li>
+<li>Doktor ko‘rigiga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("tomoq")){
+
+result.innerHTML = `
+<h2>😷 Tomoq og‘rig‘i</h2>
+<ul>
+<li>Iliq choy iching</li>
+<li>Asal iste'mol qiling</li>
+<li>Sovuq suv ichmang</li>
+<li>Tomoq spreyi ishlating</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("yo'tal") || text.includes("yotal")){
+
+result.innerHTML = `
+<h2>🤧 Yo‘tal</h2>
+<ul>
+<li>Asalli choy iching</li>
+<li>Xonani nam tuting</li>
+<li>Iliq suv iching</li>
+<li>Yo‘tal siropi haqida dorixonadan so‘rang</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("isitma")){
+
+result.innerHTML = `
+<h2>🌡️ Isitma</h2>
+<ul>
+<li>Dam oling</li>
+<li>Ko‘p suyuqlik iching</li>
+<li>Haroratni tekshirib boring</li>
+<li>Yuqori isitmada shifokorga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("tish")){
+
+result.innerHTML = `
+<h2>🦷 Tish og‘rig‘i</h2>
+<ul>
+<li>Shirinlikni kamaytiring</li>
+<li>Tuzli suv bilan chaying</li>
+<li>Tish shifokoriga boring</li>
+<li>Tishni toza tuting</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("quloq")){
+
+result.innerHTML = `
+<h2>👂 Quloq og‘rig‘i</h2>
+<ul>
+<li>Sovuq shamoldan saqlaning</li>
+<li>Quloqqa o'tkir narsa tiqmang</li>
+<li>Shifokorga murojaat qiling</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("ko'z") || text.includes("koz")){
+
+result.innerHTML = `
+<h2>👁️ Ko‘z og‘rig‘i</h2>
+<ul>
+<li>Telefonni kamaytiring</li>
+<li>Ko‘zni dam oldiring</li>
+<li>Ko‘p uxlang</li>
+<li>Ko‘z doktori ko‘rigiga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("oyoq")){
+
+result.innerHTML = `
+<h2>🦵 Oyoq og‘rig‘i</h2>
+<ul>
+<li>Ko‘proq dam oling</li>
+<li>Massaj qiling</li>
+<li>Yengil mashq qiling</li>
+<li>Og‘riq davom etsa doktor ko‘rigiga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("qo'l") || text.includes("qol")){
+
+result.innerHTML = `
+<h2>💪 Qo‘l og‘rig‘i</h2>
+<ul>
+<li>Qo‘lni zo‘riqtirmang</li>
+<li>Dam bering</li>
+<li>Yengil mashqlar qiling</li>
+<li>Shifokor bilan maslahat qiling</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("bel")){
+
+result.innerHTML = `
+<h2>🦴 Bel og‘rig‘i</h2>
+<ul>
+<li>Og‘ir yuk ko‘tarmang</li>
+<li>Tekis yoting</li>
+<li>Massaj foydali bo‘lishi mumkin</li>
+<li>Ortoped ko‘rigiga boring</li>
+</ul>
+`;
+
+}
+
+else if(text.includes("bo'yin") || text.includes("boyin")){
+
+result.innerHTML = `
+<h2>🧍 Bo‘yin og‘rig‘i</h2>
+<ul>
+<li>Telefonni pastga qarab uzoq ishlatmang</li>
+<li>Bo‘yin mashqlari qiling</li>
+<li>Yumshoq yostiqda uxlang</li>
+</ul>
+`;
+
+}
+
+else{
+
+result.innerHTML = `
+<h2>❌ Aniqlanmadi</h2>
+<p>Iltimos kasallik yoki og‘riqni aniqroq yozing.</p>
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
