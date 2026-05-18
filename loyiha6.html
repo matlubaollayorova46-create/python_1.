@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Master Academy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:25px;
+    background:#111827;
+    box-shadow:0 0 15px cyan;
+}
+
+header h1{
+    color:cyan;
+    font-size:40px;
+}
+
+.container{
+    width:95%;
+    margin:auto;
+    padding:20px;
+}
+
+.progress-box{
+    width:100%;
+    background:#334155;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.progress{
+    width:0%;
+    height:25px;
+    background:linear-gradient(to right,cyan,blue);
+    text-align:center;
+    line-height:25px;
+    font-weight:bold;
+}
+
+.levels{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 15px rgba(0,255,255,0.3);
+}
+
+.card h2{
+    color:cyan;
+    margin-bottom:15px;
+}
+
+iframe{
+    width:100%;
+    height:200px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.example{
+    background:#334155;
+    padding:10px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:cyan;
+    color:black;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:white;
+}
+
+.result{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📘 Math Master Academy</h1>
+    <p>0 dan matematikani o‘rganing 🚀</p>
+</header>
+
+<div class="container">
+
+<h2>📈 Progress</h2>
+
+<div class="progress-box">
+    <div class="progress" id="progress">0%</div>
+</div>
+
+<div class="levels" id="levels"></div>
+
+</div>
+
+<footer>
+🚀 Professional matematik bo‘lish sari!
+</footer>
+
+<script>
+
+const lessons = [
+
+{
+title:"1. Sonlar",
+video:"https://www.youtube.com/embed/bzVHjg3AqIQ",
+question:"5 + 3 = ?",
+answer:"8"
+},
+
+{
+title:"2. Qo‘shish",
+video:"https://www.youtube.com/embed/8mcTsyV56Zw",
+question:"10 + 7 = ?",
+answer:"17"
+},
+
+{
+title:"3. Ayirish",
+video:"https://www.youtube.com/embed/d1C8yljJ0xU",
+question:"20 - 5 = ?",
+answer:"15"
+},
+
+{
+title:"4. Ko‘paytirish",
+video:"https://www.youtube.com/embed/rdQz6ei-3fM",
+question:"6 × 4 = ?",
+answer:"24"
+},
+
+{
+title:"5. Bo‘lish",
+video:"https://www.youtube.com/embed/T4L3knz7bnI",
+question:"24 ÷ 6 = ?",
+answer:"4"
+},
+
+{
+title:"6. Kasrlar",
+video:"https://www.youtube.com/embed/3gh6Koh2Y1s",
+question:"1/2 + 1/2 = ?",
+answer:"1"
+},
+
+{
+title:"7. Algebra",
+video:"https://www.youtube.com/embed/NybHckSEQBI",
+question:"x + 5 = 10, x = ?",
+answer:"5"
+},
+
+{
+title:"8. Darajalar",
+video:"https://www.youtube.com/embed/lh6QxY4Qx4U",
+question:"2² = ?",
+answer:"4"
+}
+
+];
+
+const levels = document.getElementById("levels");
+let completed = 0;
+
+lessons.forEach((lesson,index)=>{
+
+const card = document.createElement("div");
+card.className = "card";
+
+card.innerHTML = `
+<h2>${lesson.title}</h2>
+
+<iframe 
+src="${lesson.video}" 
+allowfullscreen>
+</iframe>
+
+<div class="example">
+📌 Misol: ${lesson.question}
+</div>
+
+<input 
+type="text"
+id="answer${index}"
+placeholder="Javobni kiriting">
+
+<button onclick="checkAnswer(${index})">
+Tekshirish
+</button>
+
+<div class="result" id="result${index}"></div>
+`;
+
+levels.appendChild(card);
+
+});
+
+function checkAnswer(index){
+
+const userAnswer =
+document.getElementById("answer"+index).value.trim();
+
+const result =
+document.getElementById("result"+index);
+
+if(userAnswer === lessons[index].answer){
+
+result.innerHTML = "✅ To‘g‘ri!";
+result.style.color = "lightgreen";
+
+completed++;
+
+let percent =
+Math.floor((completed / lessons.length) * 100);
+
+document.getElementById("progress").style.width =
+percent + "%";
+
+document.getElementById("progress").innerHTML =
+percent + "%";
+
+}else{
+
+result.innerHTML = "❌ Noto‘g‘ri!";
+result.style.color = "red";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
